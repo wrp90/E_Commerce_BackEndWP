@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   // be sure to include its associated Products
   try {
     const allCategories = await Category.findAll({
-      include: [Product]
+      include: [{ model: Product }],
     });
     res.status(200).json(allCategories);
   } catch (err) {
@@ -21,9 +21,8 @@ router.get('/:id', (req, res) => {
   // be sure to include its associated Products
   try {
     const idValue = await Category.findByPk(req.params.id, {
-      include: [Product],
+      include: [{ model: Product }],
     });
-
     if (!idValue) {
       res.status(404).json({ message: 'There has been an error' });
       return;
@@ -77,12 +76,10 @@ router.delete('/:id', (req, res) => {
         id: req.params.id,
       },
     });
-
     if (!deletedCategory) {
       res.status(404).json({ message: 'There has been an error' });
       return;
     }
-
     res.status(200).json(deletedCategory);
   } catch (err) {
     res.status(500).json(err);
@@ -90,4 +87,6 @@ router.delete('/:id', (req, res) => {
 });
 
 module.exports = router;
+
+
 
