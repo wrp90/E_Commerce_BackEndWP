@@ -24,7 +24,7 @@ router.get('/:id', async (req, res) => {
       include: [{ model: Product }],
     });
     if (!idValue) {
-      res.status(404).json({ message: 'There has been an error' });
+      res.status(404).json({ message: 'There has been an error.' });
       return;
     }
     res.status(200).json(idValue);
@@ -59,7 +59,7 @@ router.put('/:id', async (req, res) => {
       }
     );
     if (!updateIdValue) {
-      res.status(404).json({ message: 'There has been an error' });
+      res.status(404).json({ message: 'There has been an error.' });
       return;
     }
     res.status(200).json(updateIdValue);
@@ -77,7 +77,7 @@ router.delete('/:id', async (req, res) => {
       },
     });
     if (!deletedCategory) {
-      res.status(404).json({ message: 'There has been an error' });
+      res.status(404).json({ message: 'There has been an error.' });
       return;
     }
     res.status(200).json(deletedCategory);
