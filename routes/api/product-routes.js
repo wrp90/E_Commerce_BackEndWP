@@ -26,15 +26,10 @@ router.get('/:id', async (req, res) => {
     const singleProduct = await Product.findByPk(req.params.id, {
       include: [{ model: Category }, { model: Tag, through: ProductTag, as: 'tags_on_product' }],
     });
-    if (!singleProduct) {
-      res.status(404).json({ message: 'There has been an error' });
-      return;
-    }
     res.status(200).json(singleProduct);
   } catch (err) {
     res.status(500).json(err);
   }
-
 });
 
 // create new product
