@@ -8,7 +8,10 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Product data
   try {
     const allTags = await Tag.findAll({
-      include: [{ model: Product }],
+      include: [{ 
+        model: Product,
+        as: 'product_with_tag'
+      }],
     });
     res.status(200).json(allTags);
   } catch (err) {
@@ -21,7 +24,10 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Product data
   try {
     const singleTag = await Tag.findByPk(req.params.id, {
-      include: [{ model: Product }],
+      include: [{ 
+        model: Product,
+        as: 'product_with_tag'
+      }],
     });
     if (!singleTag) {
       res.status(404).json({ message: 'There has been an error.' });
@@ -37,7 +43,6 @@ router.post('/', async (req, res) => {
   // create a new tag
   try {
     const newTag = await Tag.create({
-      id: req.body.id,
       tag_name: req.body.tag_name
     });
     res.status(200).json(newTag);
@@ -52,7 +57,7 @@ router.put('/:id', async (req, res) => {
   try {
     const updateTagName = await Tag.update(
       {
-        Tag_name: req.body.Tag_name,
+        tag_name: req.body.tag_name,
       },
       {
         where: {
