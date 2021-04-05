@@ -24,7 +24,7 @@ For any questions:
 
 ## Video Demo + Repo
 
-* https://drive.google.com/file/d/15o6TLvjl0JHOnEXk_dGQsdMOifuiVZB0/view
+* https://drive.google.com/file/d/14clgCB4bzaUEYE5TA3ey1nHA7VwYC4i2/view
 
 * https://github.com/wrp90/E_Commerce_BackEndWP
 
